@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Package,
   Truck,
@@ -29,21 +29,34 @@ import {
   Compass,
   ChevronDown
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
   const [calcRegion, setCalcRegion] = useState('cairo');
   const [calcOrders, setCalcOrders] = useState(25);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const regionPrices: Record<string, { name: string; base: number }> = {
-    cairo: { name: 'القاهرة / الجيزة', base: 120 },
-    alex_in: { name: 'الإسكندرية (داخل)', base: 80 },
-    alex_out: { name: 'الإسكندرية (خارج)', base: 60 },
-    delta: { name: 'الدلتا والبحيرة وبورسعيد', base: 100 },
-    upper_near: { name: 'الصعيد القريب (المنيا، بني سويف، أسيوط...)', base: 150 },
-    upper_far: { name: 'الصعيد البعيد (أسوان، قنا، الوادي الجديد...)', base: 180 },
-    special: { name: 'المناطق الخاصة (شرم الشيخ، سيناء، الأقصر...)', base: 200 },
+  const regionPrices: Record<string, { name: string; shortName: string; base: number }> = {
+    cairo: { name: 'القاهرة / الجيزة', shortName: 'القاهرة / الجيزة', base: 120 },
+    alex_in: { name: 'الإسكندرية (داخل)', shortName: 'الإسكندرية (داخل)', base: 80 },
+    alex_out: { name: 'الإسكندرية (خارج)', shortName: 'الإسكندرية (خارج)', base: 60 },
+    delta: { name: 'الدلتا والبحيرة وبورسعيد', shortName: 'الدلتا والمحافظات', base: 100 },
+    upper_near: { name: 'الصعيد القريب (المنيا، بني سويف، أسيوط...)', shortName: 'الصعيد القريب', base: 150 },
+    upper_far: { name: 'الصعيد البعيد (أسوان، قنا، الوادي الجديد...)', shortName: 'الصعيد البعيد', base: 180 },
+    special: { name: 'المناطق الخاصة (شرم الشيخ، سيناء، الأقصر...)', shortName: 'المناطق الخاصة', base: 200 },
   };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const getDiscount = (orders: number) => {
     if (orders >= 150) return { pct: 30, name: 'باقة VIP' };
@@ -287,9 +300,9 @@ export default function Home() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-mahameru leading-tight mb-6 text-white">
-              شحنتك في أمان تام مع <br />
-              <span className="text-gradient drop-shadow-md">شركة النمر للشحن</span>
+            {/* Title with word "مع" placed precisely in the middle */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-mahameru leading-tight mb-6 text-white text-center sm:text-right">
+              شحنتك في أمان تام <span className="text-red-500 mx-2 inline-block">مع</span> شركة النمر للشحن
             </h1>
 
             {/* Exact Page 1 Content Box */}
@@ -395,7 +408,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Interactive Shipping Cost Calculator with Modern Redesigned Region Selector */}
+      {/* Interactive Shipping Cost Calculator with Floating Dribbble-Style Custom Dropdown */}
       <section id="calculator" className="py-20 px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -418,19 +431,56 @@ export default function Home() {
                   <label className="block text-xs font-black text-slate-300 mb-2 tracking-wide">
                     ١. اختر المنطقة الجغرافية (التوصيل السريع)
                   </label>
-                  <div className="relative">
-                    <select
-                      value={calcRegion}
-                      onChange={(e) => setCalcRegion(e.target.value)}
-                      className="w-full bg-slate-900/90 border border-slate-700/80 rounded-2xl p-3.5 pr-4 pl-10 font-bold text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-500 shadow-md appearance-none cursor-pointer"
+
+                  {/* Custom Dribbble-Style Floating Menu Dropdown */}
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      type="button"
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl py-3 px-4 font-bold text-xs sm:text-sm text-white flex items-center justify-between shadow-md hover:border-red-500 transition-all cursor-pointer"
                     >
-                      {Object.entries(regionPrices).map(([key, val]) => (
-                        <option key={key} value={key} className="bg-slate-900 text-white py-2">
-                          {val.name} — {val.base} جنيه
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-400 pointer-events-none" />
+                      <div className="flex items-center gap-2.5 truncate">
+                        <MapPin className="w-4 h-4 text-red-500 flex-shrink-0" />
+                        <span className="truncate">{regionPrices[calcRegion].name}</span>
+                      </div>
+                      <ChevronDown className={`w-4 h-4 text-amber-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    <AnimatePresence>
+                      {isDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden py-2 divide-y divide-slate-800"
+                        >
+                          {Object.entries(regionPrices).map(([key, val]) => (
+                            <button
+                              key={key}
+                              type="button"
+                              onClick={() => {
+                                setCalcRegion(key);
+                                setIsDropdownOpen(false);
+                              }}
+                              className={`w-full px-4 py-3 text-right flex items-center justify-between text-xs sm:text-sm font-bold transition-colors ${
+                                calcRegion === key
+                                  ? 'bg-red-600/20 text-red-400 border-r-4 border-red-600'
+                                  : 'text-slate-200 hover:bg-slate-800/80'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <div className="w-6 h-6 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400">
+                                  <MapPin className="w-3.5 h-3.5" />
+                                </div>
+                                <span className="truncate">{val.shortName}</span>
+                              </div>
+                              <span className="text-amber-400 font-black">{val.base} ج.م</span>
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
 
