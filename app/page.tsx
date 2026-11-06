@@ -23,7 +23,10 @@ import {
   Sparkles,
   Percent,
   Check,
-  Send
+  Send,
+  Plane,
+  Box,
+  Compass
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -189,62 +192,47 @@ export default function Home() {
       {/* Background Moving Glow Orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, 80, 0],
-            y: [0, -50, 0],
-          }}
+          animate={{ scale: [1, 1.3, 1], x: [0, 80, 0], y: [0, -50, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute -top-32 -left-32 w-[35rem] h-[35rem] bg-gradient-to-br from-red-600/20 via-rose-600/10 to-transparent rounded-full blur-[120px]"
         />
         <motion.div
-          animate={{
-            scale: [1.3, 1, 1.3],
-            x: [0, -80, 0],
-            y: [0, 80, 0],
-          }}
+          animate={{ scale: [1.3, 1, 1.3], x: [0, -80, 0], y: [0, 80, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/3 -right-32 w-[40rem] h-[40rem] bg-gradient-to-bl from-amber-500/20 via-yellow-600/10 to-transparent rounded-full blur-[140px]"
         />
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 60, 0],
-          }}
+          animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, 60, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute -bottom-32 left-1/3 w-[35rem] h-[35rem] bg-gradient-to-tr from-red-600/15 via-amber-500/15 to-transparent rounded-full blur-[130px]"
         />
       </div>
 
-      {/* Floating Animated Icons in Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        <motion.div
-          animate={{ y: [-20, 20, -20], rotate: [0, 10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-40 left-16 text-red-500"
-        >
-          <Truck className="w-16 h-16" />
+      {/* 7. Enhanced 3D Background Icons (Visible & Floating) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
+        <motion.div animate={{ y: [-30, 30, -30], rotate: [0, 15, 0], x: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-28 left-12 text-red-500">
+          <Truck className="w-20 h-20" />
         </motion.div>
-        <motion.div
-          animate={{ y: [20, -20, 20], rotate: [0, -10, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-96 right-20 text-amber-400"
-        >
-          <Package className="w-20 h-20" />
+        <motion.div animate={{ y: [30, -30, 30], rotate: [0, -20, 0], x: [10, -10, 10] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-1/3 right-16 text-amber-400">
+          <Package className="w-24 h-24" />
         </motion.div>
-        <motion.div
-          animate={{ y: [-15, 15, -15], rotate: [0, 15, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-60 left-32 text-rose-500"
-        >
-          <MapPin className="w-14 h-14" />
+        <motion.div animate={{ y: [-25, 25, -25], rotate: [0, 25, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-1/4 left-24 text-rose-500">
+          <MapPin className="w-16 h-16" />
+        </motion.div>
+        <motion.div animate={{ y: [20, -20, 20], rotate: [0, -15, 0] }} transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-2/3 right-32 text-yellow-500">
+          <Plane className="w-18 h-18" />
+        </motion.div>
+        <motion.div animate={{ y: [-15, 25, -15], rotate: [0, 30, 0] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }} className="absolute bottom-10 right-1/4 text-red-400">
+          <Box className="w-16 h-16" />
+        </motion.div>
+        <motion.div animate={{ y: [20, -15, 20], rotate: [0, -25, 0] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-1/4 left-1/3 text-amber-500">
+          <Compass className="w-16 h-16" />
         </motion.div>
       </div>
 
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-50 px-4 py-4">
-        <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10">
+      {/* 6. Fixed Sticky Glass Navigation Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
+        <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 backdrop-blur-2xl">
           <div className="flex items-center gap-3">
             <motion.div
               whileHover={{ rotate: 360, scale: 1.1 }}
@@ -281,135 +269,135 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-28 px-4 z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Left/Text Content */}
+      {/* Hero Section with 5. Responsive Aspect Ratio Container */}
+      <section className="relative pt-32 pb-28 px-4 z-10 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-7 text-right"
+          >
+            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 border border-amber-500/30 shadow-lg">
+              <Sparkles className="w-5 h-5 text-amber-400 animate-spin" />
+              <span className="text-sm font-bold text-amber-200">
+                حلول لوجستية متكاملة لجميع المحافظات بأعلى معايير الاحترافية
+              </span>
+            </div>
+
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-serif-luxury leading-tight mb-6 text-white">
+              شحنتك في أمان تام مع <br />
+              <span className="text-gradient drop-shadow-md">شركة النمر للشحن</span>
+            </h1>
+
+            {/* Exact Page 1 Content Box in Glass */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-7 text-right"
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+              className="glass rounded-3xl p-8 mb-8 border border-white/20 shadow-2xl glow-red relative overflow-hidden"
             >
-              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 border border-amber-500/30 shadow-lg">
-                <Sparkles className="w-5 h-5 text-amber-400 animate-spin" />
-                <span className="text-sm font-bold text-amber-200">
-                  حلول لوجستية متكاملة لجميع المحافظات بأعلى معايير الاحترافية
-                </span>
-              </div>
+              {/* 4. Edge-to-edge top accent line */}
+              <div className="absolute top-0 left-0 right-0 w-full h-1.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
+              <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-bold font-serif-luxury pt-2">
+                شركة النمر للشحن هي شركة متخصصة في تقديم خدمات لوجستية متكاملة تهدف إلى تسهيل عمليات الشحن والتوصيل للأفراد وأصحاب الأعمال بكفاءة عالية. نعتمد على منظومة تشغيل حديثة تضمن السرعة في التنفيذ والدقة في الأداء مع تغطية شاملة لمختلف المناطق.
+              </p>
+              <div className="my-5 border-t border-slate-700/80" />
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
+                نوفر تجربة خدمة متكاملة تشمل تتبع الشحنات بشكل لحظي وإدارة إلكترونية سهلة ومرنة إلى جانب حلول تحصيل آمنة وسريعة. كما نعمل على تقديم باقات تعاقد متنوعة تناسب احتياجات الأنشطة التجارية المختلفة. تلتزم شركة النمر للشحن بمعايير الجودة والاحترافية في جميع مراحل الخدمة، مع التركيز على التطوير المستمر لتلبية متطلبات السوق وتحقيق أعلى مستويات رضا العملاء.
+              </p>
+            </motion.div>
 
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-serif-luxury leading-tight mb-6 text-white">
-                شحنتك في أمان تام مع <br />
-                <span className="text-gradient drop-shadow-md">شركة النمر للشحن</span>
-              </h1>
-
-              {/* Exact Page 1 Content Box in Glass */}
-              <motion.div
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.3 }}
-                className="glass rounded-3xl p-8 mb-8 border border-white/20 shadow-2xl glow-red relative overflow-hidden"
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#calculator"
+                className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-transform"
               >
-                <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-red-600 to-amber-500" />
-                <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-bold font-serif-luxury">
-                  شركة النمر للشحن هي شركة متخصصة في تقديم خدمات لوجستية متكاملة تهدف إلى تسهيل عمليات الشحن والتوصيل للأفراد وأصحاب الأعمال بكفاءة عالية. نعتمد على منظومة تشغيل حديثة تضمن السرعة في التنفيذ والدقة في الأداء مع تغطية شاملة لمختلف المناطق.
-                </p>
-                <div className="my-5 border-t border-slate-700" />
-                <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
-                  نوفر تجربة خدمة متكاملة تشمل تتبع الشحنات بشكل لحظي وإدارة إلكترونية سهلة ومرنة إلى جانب حلول تحصيل آمنة وسريعة. كما نعمل على تقديم باقات تعاقد متنوعة تناسب احتياجات الأنشطة التجارية المختلفة. تلتزم شركة النمر للشحن بمعايير الجودة والاحترافية في جميع مراحل الخدمة، مع التركيز على التطوير المستمر لتلبية متطلبات السوق وتحقيق أعلى مستويات رضا العملاء.
-                </p>
+                <Calculator className="w-5 h-5" />
+                احسب تكلفة شحنتك الآن
+              </a>
+              <a
+                href="#pricing"
+                className="flex items-center gap-2 px-8 py-4 rounded-2xl glass font-black text-lg text-slate-200 hover:scale-105 transition-transform border border-white/10"
+              >
+                استعراض الباقات والخصومات
+                <ArrowRight className="w-5 h-5 rotate-180" />
+              </a>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-800">
+              <div>
+                <div className="text-3xl sm:text-4xl font-black text-red-500">72h</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-400">حد أقصى للوجه البحري</div>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-black text-amber-400">30%</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-400">خصومات باقات VIP</div>
+              </div>
+              <div>
+                <div className="text-3xl sm:text-4xl font-black text-white">100%</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-400">سجل تجاري وبطاقة ضريبية</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Card / Interactive Service Request Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-5"
+          >
+            <div className="relative pt-6">
+              {/* 8. VIP Truck badge centered at the top middle of the box */}
+              <motion.div
+                animate={{ y: [-8, 8, -8] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -top-2 left-1/2 -translate-x-1/2 z-20 glass rounded-2xl px-6 py-3 shadow-2xl flex items-center gap-3 border border-amber-500/40 glow-gold whitespace-nowrap"
+              >
+                <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                  <Truck className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[11px] text-slate-400 font-bold">خدمة فائقة السرعة</div>
+                  <div className="text-xs sm:text-sm font-black text-white">شحن VIP نفس اليوم</div>
+                </div>
               </motion.div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <a
-                  href="#calculator"
-                  className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-transform"
-                >
-                  <Calculator className="w-5 h-5" />
-                  احسب تكلفة شحنتك الآن
-                </a>
-                <a
-                  href="#pricing"
-                  className="flex items-center gap-2 px-8 py-4 rounded-2xl glass font-black text-lg text-slate-200 hover:scale-105 transition-transform border border-white/10"
-                >
-                  استعراض الباقات والخصومات
-                  <ArrowRight className="w-5 h-5 rotate-180" />
-                </a>
-              </div>
+              <div className="glass rounded-3xl p-8 shadow-2xl relative z-10 border border-white/20 glow-red overflow-hidden mt-4">
+                {/* 4. Edge-to-edge top accent line */}
+                <div className="absolute top-0 left-0 right-0 w-full h-2.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
 
-              <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-800">
-                <div>
-                  <div className="text-3xl sm:text-4xl font-black text-red-500">72h</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-400">حد أقصى للوجه البحري</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-black text-amber-400">30%</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-400">خصومات باقات VIP</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-black text-white">100%</div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-400">سجل تجاري وبطاقة ضريبية</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Card / Interactive Service Request Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5"
-            >
-              <div className="relative">
-                <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-6 -right-6 z-20 glass rounded-2xl p-4 shadow-2xl flex items-center gap-3 border border-amber-500/40 glow-gold"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
-                    <Truck className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400 font-bold">خدمة فائقة السرعة</div>
-                    <div className="text-sm font-black text-white">شحن VIP نفس اليوم</div>
-                  </div>
-                </motion.div>
-
-                <div className="glass rounded-3xl p-8 shadow-2xl relative z-10 border border-white/20 glow-red overflow-hidden">
-                  <div className="w-full h-2.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600 -mt-8 -mx-8 mb-6" />
-
-                  <div className="text-center py-6">
-                    <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-red-600 to-amber-500 p-1 shadow-2xl glow-red flex items-center justify-center mb-4">
-                      <div className="w-full h-full bg-slate-900 rounded-[22px] flex items-center justify-center">
-                        <Package className="w-12 h-12 text-red-500" />
-                      </div>
+                <div className="text-center pt-4 pb-6">
+                  <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-red-600 to-amber-500 p-1 shadow-2xl glow-red flex items-center justify-center mb-4">
+                    <div className="w-full h-full bg-slate-900 rounded-[22px] flex items-center justify-center">
+                      <Package className="w-12 h-12 text-red-500" />
                     </div>
-                    <h3 className="text-3xl font-black text-white font-serif-luxury">شركة النمر للشحن</h3>
-                    <p className="text-sm font-bold text-amber-400 mt-1">شريكك اللوجستي الأول في مصر</p>
                   </div>
+                  <h3 className="text-3xl font-black text-white font-serif-luxury">شركة النمر للشحن</h3>
+                  <p className="text-sm font-bold text-amber-400 mt-1">شريكك اللوجستي الأول في مصر</p>
+                </div>
 
-                  {/* Quick Booking Form */}
-                  <div className="mt-4 space-y-4 bg-slate-900/60 p-6 rounded-2xl border border-white/10">
-                    <h4 className="text-base font-bold text-white text-center">طلب استلام شحنة سريعة</h4>
-                    <p className="text-xs text-slate-400 text-center">تواصل معنا مباشرة عبر واتساب لتحديد موعد استلام شحنتك خلال دقائق</p>
-                    <a
-                      href="https://wa.me/201130491212?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full text-center py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-base shadow-xl glow-gold hover:scale-105 transition-all flex items-center justify-center gap-2"
-                    >
-                      <Send className="w-5 h-5" />
-                      <span>تواصل مع خدمة العملاء (واتساب)</span>
-                    </a>
-                  </div>
+                <div className="mt-2 space-y-4 bg-slate-900/70 p-6 rounded-2xl border border-white/10">
+                  <h4 className="text-base font-bold text-white text-center">طلب استلام شحنة سريعة</h4>
+                  <p className="text-xs text-slate-300 text-center leading-relaxed">تواصل معنا مباشرة عبر واتساب لتحديد موعد استلام شحنتك خلال دقائق بكل سهولة ويسر</p>
+                  <a
+                    href="https://wa.me/201130491212?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-base shadow-xl glow-gold hover:scale-105 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-5 h-5" />
+                    <span>تواصل مع خدمة العملاء (واتساب)</span>
+                  </a>
                 </div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Interactive Shipping Cost Calculator */}
+      {/* 1. Interactive Shipping Cost Calculator (Fixed layout, ratio, space, and dividers) */}
       <section id="calculator" className="py-20 px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -478,20 +466,21 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Calculator Output with Spacing, Dividers, and Thicker Text */}
               <div className="bg-slate-900 text-white rounded-3xl p-8 text-center relative overflow-hidden shadow-2xl border border-white/10 glow-gold">
-                <div className="text-sm font-bold text-slate-400 mb-2">التكلفة بعد الخصم المباشر</div>
-                <div className="text-5xl sm:text-6xl font-black text-amber-400 my-3 font-serif-luxury">
-                  {finalCost.toLocaleString()} <span className="text-2xl font-bold text-white">جنيه</span>
+                <div className="text-sm font-black text-slate-300 mb-2 tracking-wide">التكلفة بعد الخصم المباشر</div>
+                <div className="text-5xl sm:text-6xl font-black text-amber-400 my-4 font-serif-luxury tracking-tight">
+                  {finalCost.toLocaleString()} <span className="text-2xl font-black text-white">جنيه</span>
                 </div>
 
-                <div className="space-y-2 mt-6 pt-6 border-t border-slate-800 text-sm">
-                  <div className="flex justify-between text-slate-400 font-bold">
+                <div className="space-y-4 mt-6 pt-6 border-t border-slate-800 text-sm font-black">
+                  <div className="flex justify-between items-center text-slate-300 pb-3 border-b border-slate-800">
                     <span>التكلفة الأساسية بدون باقة:</span>
-                    <span className="line-through">{baseCost.toLocaleString()} جنيه</span>
+                    <span className="line-through text-slate-400 text-base">{baseCost.toLocaleString()} جنيه</span>
                   </div>
-                  <div className="flex justify-between text-emerald-400 font-bold text-base">
+                  <div className="flex justify-between items-center text-emerald-400 text-base pb-2">
                     <span>إجمالي ما توفره مع النمر:</span>
-                    <span>{savedAmount.toLocaleString()} جنيه ({currentDiscount.pct}%)</span>
+                    <span className="text-lg">{savedAmount.toLocaleString()} جنيه ({currentDiscount.pct}%)</span>
                   </div>
                 </div>
 
@@ -499,7 +488,7 @@ export default function Home() {
                   href="https://wa.me/201130491212"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 block w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-all"
+                  className="mt-8 block w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-all shadow-xl"
                 >
                   تعاقد على هذه الباقة الآن
                 </a>
@@ -601,7 +590,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Region Shipping Rates Table */}
+          {/* 3. Region Shipping Rates Table (Last item centered when alone on row) */}
           <div className="glass rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/20">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
               <div>
@@ -614,18 +603,23 @@ export default function Home() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {regions.map((reg, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-2xl glass-light flex justify-between items-center hover:border-amber-400 transition-colors shadow-sm"
-                >
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-red-500 flex-shrink-0" />
-                    <span className="font-bold text-slate-200 text-sm">{reg.name}</span>
+              {regions.map((reg, idx) => {
+                const isLastAndOdd = idx === regions.length - 1 && regions.length % 3 === 1;
+                return (
+                  <div
+                    key={idx}
+                    className={`p-4 rounded-2xl glass-light flex justify-between items-center hover:border-amber-400 transition-colors shadow-sm ${
+                      isLastAndOdd ? 'sm:col-span-2 lg:col-span-1 lg:col-start-2' : ''
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <MapPin className="w-5 h-5 text-red-500 flex-shrink-0" />
+                      <span className="font-bold text-slate-200 text-sm">{reg.name}</span>
+                    </div>
+                    <span className="font-black text-amber-400 text-base">{reg.price}</span>
                   </div>
-                  <span className="font-black text-amber-400 text-base">{reg.price}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
