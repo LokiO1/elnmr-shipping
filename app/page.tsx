@@ -466,7 +466,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Calculator Output with Spacing, Dividers, and Thicker Text */}
+              {/* Calculator Output with Stacked Vertical Rows and Thicker Bold Text */}
               <div className="bg-slate-900 text-white rounded-3xl p-8 text-center relative overflow-hidden shadow-2xl border border-white/10 glow-gold">
                 <div className="text-sm font-black text-slate-300 mb-2 tracking-wide">التكلفة بعد الخصم المباشر</div>
                 <div className="text-5xl sm:text-6xl font-black text-amber-400 my-4 font-serif-luxury tracking-tight">
