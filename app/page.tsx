@@ -22,15 +22,12 @@ import {
   Calculator,
   Search,
   Sparkles,
-  ChevronDown,
-  ExternalLink,
   Percent,
   Check
 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Home() {
-  // Calculator state
   const [calcRegion, setCalcRegion] = useState('cairo');
   const [calcOrders, setCalcOrders] = useState(25);
   const [trackingCode, setTrackingCode] = useState('');
@@ -206,38 +203,22 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 selection:bg-red-500 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 selection:bg-red-500 selection:text-white font-sans" dir="rtl">
       {/* Background Animated Orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-20 -left-20 w-96 h-96 bg-gradient-to-br from-red-500/15 via-amber-400/10 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 -right-20 w-[30rem] h-[30rem] bg-gradient-to-bl from-amber-400/15 via-red-500/10 to-transparent rounded-full blur-3xl"
-        />
+        <div className="absolute -top-20 -left-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 -right-20 w-[30rem] h-[30rem] bg-amber-400/10 rounded-full blur-3xl" />
       </div>
 
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 px-4 py-3">
-        <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3 flex items-center justify-between shadow-lg">
+        <div className="max-w-7xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl px-6 py-3 flex items-center justify-between shadow-lg border border-white/40">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-red-500/30">
               <Package className="w-7 h-7" />
             </div>
             <div>
-              <div className="text-2xl font-black text-gradient leading-none">النمر للشحن</div>
+              <div className="text-2xl font-black text-red-600 leading-none">النمر للشحن</div>
               <div className="text-xs font-bold text-amber-600 tracking-wider">EL NMR SHIPPING</div>
             </div>
           </div>
@@ -268,31 +249,26 @@ export default function Home() {
       <section className="relative pt-12 pb-24 px-4 z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Left/Right Text in RTL */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-7 text-right"
-            >
-              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 border-amber-300/40">
-                <Sparkles className="w-5 h-5 text-amber-500 animate-spin" />
+            {/* Text Content */}
+            <div className="lg:col-span-7 text-right">
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-amber-300/40 shadow-sm">
+                <Sparkles className="w-5 h-5 text-amber-500" />
                 <span className="text-sm font-bold text-slate-800">
                   حلول لوجستية متكاملة لجميع المحافظات
                 </span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-6">
+              <h1 className="text-4xl sm:text-6xl font-black leading-tight mb-6">
                 شحنتك في أمان مع <br />
-                <span className="text-gradient">شركة النمر للشحن</span>
+                <span className="text-red-600">شركة النمر للشحن</span>
               </h1>
 
-              {/* Exact Page 1 Content included verbatim */}
-              <div className="glass rounded-3xl p-6 sm:p-8 mb-8 border-white/60 shadow-xl">
+              {/* Exact Page 1 Content */}
+              <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 mb-8 border border-white shadow-xl">
                 <p className="text-lg sm:text-xl text-slate-700 leading-relaxed font-semibold">
                   شركة النمر للشحن هي شركة متخصصة في تقديم خدمات لوجستية متكاملة تهدف إلى تسهيل عمليات الشحن والتوصيل للأفراد وأصحاب الأعمال بكفاءة عالية. نعتمد على منظومة تشغيل حديثة تضمن السرعة في التنفيذ والدقة في الأداء مع تغطية شاملة لمختلف المناطق.
                 </p>
-                <div className="my-4 border-t border-slate-200/60" />
+                <div className="my-4 border-t border-slate-200" />
                 <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                   نوفر تجربة خدمة متكاملة تشمل تتبع الشحنات بشكل لحظي وإدارة إلكترونية سهلة ومرنة إلى جانب حلول تحصيل آمنة وسريعة. كما نعمل على تقديم باقات تعاقد متنوعة تناسب احتياجات الأنشطة التجارية المختلفة. تلتزم شركة النمر للشحن بمعايير الجودة والاحترافية في جميع مراحل الخدمة، مع التركيز على التطوير المستمر لتلبية متطلبات السوق وتحقيق أعلى مستويات رضا العملاء.
                 </p>
@@ -301,14 +277,14 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="#calculator"
-                  className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg shadow-xl shadow-red-500/25 hover-lift"
+                  className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg shadow-xl shadow-red-500/25 hover:scale-105 transition-transform"
                 >
                   <Calculator className="w-5 h-5" />
                   احسب تكلفة شحنتك
                 </a>
                 <a
                   href="#pricing"
-                  className="flex items-center gap-2 px-8 py-4 rounded-2xl glass font-black text-lg text-slate-800 hover-lift"
+                  className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-white/80 backdrop-blur-md font-black text-lg text-slate-800 shadow-xl border border-white hover:scale-105 transition-transform"
                 >
                   استعراض الباقات والخصومات
                   <ArrowRight className="w-5 h-5 rotate-180" />
@@ -316,7 +292,7 @@ export default function Home() {
               </div>
 
               {/* Quick trust metrics */}
-              <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-200/80">
+              <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-200">
                 <div>
                   <div className="text-3xl sm:text-4xl font-black text-red-600">72h</div>
                   <div className="text-xs sm:text-sm font-bold text-slate-600">حد أقصى بحري</div>
@@ -330,22 +306,12 @@ export default function Home() {
                   <div className="text-xs sm:text-sm font-bold text-slate-600">سجل وبطاقة ضريبية</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Right Interactive 3D Card / Tracking Box */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-5"
-            >
+            {/* Right Card / Tracking Box */}
+            <div className="lg:col-span-5">
               <div className="relative">
-                {/* Floating Truck Badge */}
-                <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="absolute -top-6 -right-6 z-20 glass rounded-2xl p-4 shadow-xl flex items-center gap-3 border-amber-400/40"
-                >
+                <div className="absolute -top-6 -right-6 z-20 bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-xl flex items-center gap-3 border border-amber-400/40">
                   <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-600 flex items-center justify-center font-bold">
                     <Truck className="w-6 h-6" />
                   </div>
@@ -353,28 +319,21 @@ export default function Home() {
                     <div className="text-xs text-slate-500 font-bold">خدمة خاصة</div>
                     <div className="text-sm font-black text-slate-900">شحن VIP نفس اليوم</div>
                   </div>
-                </motion.div>
+                </div>
 
-                {/* Main Glass Visual Box */}
-                <div className="glass rounded-3xl p-8 shadow-2xl relative z-10 border-white/80 overflow-hidden">
+                <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl relative z-10 border border-white overflow-hidden">
                   <div className="w-full h-2 bg-gradient-to-r from-red-600 via-amber-500 to-red-600 -mt-8 -mx-8 mb-6" />
 
-                  {/* Logo Centerpiece */}
                   <div className="text-center py-6">
-                    <motion.div
-                      animate={{ rotateY: [0, 360] }}
-                      transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                      className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-red-600 to-amber-500 p-1 shadow-2xl shadow-red-500/40 flex items-center justify-center mb-4"
-                    >
-                      <div className="w-full h-full bg-white/90 rounded-[22px] flex items-center justify-center">
+                    <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-red-600 to-amber-500 p-1 shadow-2xl shadow-red-500/40 flex items-center justify-center mb-4">
+                      <div className="w-full h-full bg-white rounded-[22px] flex items-center justify-center">
                         <Package className="w-12 h-12 text-red-600" />
                       </div>
-                    </motion.div>
+                    </div>
                     <h3 className="text-3xl font-black text-slate-900">شركة النمر للشحن</h3>
                     <p className="text-sm font-bold text-amber-600 mt-1">السرعة • الأمان • الاحترافية</p>
                   </div>
 
-                  {/* Live Tracking Input Demo */}
                   <form onSubmit={handleTrack} className="mt-4 space-y-3">
                     <label className="block text-xs font-black text-slate-700">تتبع شحنتك لحظة بلحظة</label>
                     <div className="flex gap-2">
@@ -383,7 +342,7 @@ export default function Home() {
                         placeholder="أدخل كود الشحنة (مثال: NMR-8942)"
                         value={trackingCode}
                         onChange={(e) => setTrackingCode(e.target.value)}
-                        className="flex-1 bg-white/80 border border-slate-300 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-red-500"
+                        className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-red-500"
                       />
                       <button
                         type="submit"
@@ -394,36 +353,28 @@ export default function Home() {
                     </div>
                   </form>
 
-                  {/* Tracking Result Mockup */}
-                  <AnimatePresence>
-                    {trackingResult && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mt-4 p-4 rounded-2xl bg-white/90 border border-emerald-500/30"
-                      >
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-bold text-slate-500">كود: {trackingResult.id}</span>
-                          <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full flex items-center gap-1">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                            {trackingResult.status}
-                          </span>
-                        </div>
-                        <div className="w-full bg-slate-100 rounded-full h-2 mb-2 overflow-hidden">
-                          <div className="bg-gradient-to-r from-amber-500 to-emerald-500 h-2 rounded-full w-3/4" />
-                        </div>
-                        <div className="text-xs text-slate-600 flex justify-between font-bold">
-                          <span>المقر بالإسكندرية</span>
-                          <span>المندوب في الطريق</span>
-                          <span>تم التسليم</span>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {trackingResult && (
+                    <div className="mt-4 p-4 rounded-2xl bg-white border border-emerald-500/30 shadow-md">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-bold text-slate-500">كود: {trackingResult.id}</span>
+                        <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full flex items-center gap-1">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                          {trackingResult.status}
+                        </span>
+                      </div>
+                      <div className="w-full bg-slate-100 rounded-full h-2 mb-2 overflow-hidden">
+                        <div className="bg-gradient-to-r from-amber-500 to-emerald-500 h-2 rounded-full w-3/4" />
+                      </div>
+                      <div className="text-xs text-slate-600 flex justify-between font-bold">
+                        <span>المقر بالإسكندرية</span>
+                        <span>المندوب في الطريق</span>
+                        <span>تم التسليم</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -432,7 +383,7 @@ export default function Home() {
       <section id="calculator" className="py-20 px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600 shadow-sm border border-white">
               <Calculator className="w-4 h-4" />
               حاسبة الباقات التفاعلية
             </div>
@@ -444,9 +395,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="glass rounded-3xl p-8 sm:p-12 shadow-2xl border-white/80">
+          <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-2xl border border-white">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Controls */}
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-black text-slate-800 mb-2">
@@ -498,11 +448,9 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Live Cost Output */}
-              <div className="glass-dark rounded-3xl p-8 text-white text-center relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/20 rounded-full blur-2xl" />
+              <div className="bg-slate-900 text-white rounded-3xl p-8 text-center relative overflow-hidden shadow-2xl">
                 <div className="text-sm font-bold text-slate-400 mb-2">التكلفة بعد الخصم المباشر</div>
-                <div className="text-5xl sm:text-6xl font-black text-gradient my-3">
+                <div className="text-5xl sm:text-6xl font-black text-amber-400 my-3">
                   {finalCost.toLocaleString()} <span className="text-2xl font-bold text-white">جنيه</span>
                 </div>
 
@@ -532,11 +480,11 @@ export default function Home() {
       </section>
 
       {/* Why Choose El NMR Section */}
-      <section id="features" className="py-20 px-4 bg-gradient-to-b from-transparent via-red-50/40 to-transparent relative z-10">
+      <section id="features" className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600">
-              <Star className="w-4 h-4 fill-current" />
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600 shadow-sm border border-white">
+              <Star className="w-4 h-4 fill-current text-amber-500" />
               أفضل جودة وخدمة
             </div>
             <h2 className="text-4xl sm:text-5xl font-black text-slate-900">
@@ -549,10 +497,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((item, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                whileHover={{ y: -8 }}
-                className="glass rounded-3xl p-6 shadow-xl border-white/80 transition-all flex flex-col justify-between"
+                className="bg-white/85 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white flex flex-col justify-between hover:-translate-y-2 transition-transform"
               >
                 <div>
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center mb-5 shadow-lg shadow-red-500/20`}>
@@ -561,7 +508,7 @@ export default function Home() {
                   <h3 className="text-xl font-black text-slate-900 mb-3">{item.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed font-semibold">{item.description}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -571,7 +518,7 @@ export default function Home() {
       <section id="pricing" className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600 shadow-sm border border-white">
               <Percent className="w-4 h-4" />
               باقات الشحن الشهرية
             </div>
@@ -585,10 +532,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
             {pricingTiers.map((tier, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                whileHover={{ scale: 1.03 }}
-                className={`glass rounded-3xl p-6 relative flex flex-col justify-between shadow-xl border-white/80 ${
+                className={`bg-white/85 backdrop-blur-md rounded-3xl p-6 relative flex flex-col justify-between shadow-xl border border-white ${
                   tier.popular ? 'ring-4 ring-red-500/50 shadow-2xl bg-gradient-to-b from-white to-red-50/50' : ''
                 }`}
               >
@@ -601,11 +547,11 @@ export default function Home() {
                   <div className="text-xs font-bold text-slate-500 mb-1">{tier.orders}</div>
                   <h3 className="text-2xl font-black text-slate-900 mb-4">{tier.name}</h3>
 
-                  <div className="text-4xl font-black text-gradient mb-2">{tier.discount}</div>
+                  <div className="text-4xl font-black text-red-600 mb-2">{tier.discount}</div>
                   <div className="text-sm font-bold text-emerald-600 mb-4">{tier.savings}</div>
 
                   {tier.bonus && (
-                    <div className="bg-amber-100/60 border border-amber-300/40 rounded-xl p-2.5 text-xs font-bold text-amber-900 mb-4">
+                    <div className="bg-amber-100/80 border border-amber-300/40 rounded-xl p-2.5 text-xs font-bold text-amber-900 mb-4">
                       🎁 {tier.bonus}
                     </div>
                   )}
@@ -619,12 +565,12 @@ export default function Home() {
                 >
                   اختيار الباقة
                 </a>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Region Shipping Rates Table */}
-          <div className="glass rounded-3xl p-8 sm:p-12 shadow-2xl border-white/80">
+          <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-2xl border border-white">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
               <div>
                 <h3 className="text-3xl font-black text-slate-900">أسعار الشحن حسب المناطق والمحافظات</h3>
@@ -639,7 +585,7 @@ export default function Home() {
               {regions.map((reg, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-2xl bg-white/80 border border-slate-200/80 flex justify-between items-center hover:border-amber-400 transition-colors shadow-sm"
+                  className="p-4 rounded-2xl bg-white border border-slate-200/80 flex justify-between items-center hover:border-amber-400 transition-colors shadow-sm"
                 >
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-red-600 flex-shrink-0" />
@@ -657,7 +603,7 @@ export default function Home() {
       <section id="policy" className="py-20 px-4 bg-slate-100/60 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600 shadow-sm border border-white">
               <Shield className="w-4 h-4" />
               الشفافية والمصداقية
             </div>
@@ -671,7 +617,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {policyPoints.map((item, idx) => (
-              <div key={idx} className="glass rounded-3xl p-6 shadow-xl border-white/80">
+              <div key={idx} className="bg-white/85 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-red-600/10 text-red-600 flex items-center justify-center font-black">
                     {idx + 1}
@@ -683,8 +629,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Customer support callout */}
-          <div className="glass rounded-3xl p-8 border-red-300/40 text-center max-w-3xl mx-auto bg-gradient-to-r from-red-50/60 to-amber-50/60">
+          <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 border border-white text-center max-w-3xl mx-auto shadow-xl">
             <p className="text-base sm:text-lg font-bold text-slate-800 leading-relaxed">
               تحرص الشركة على تقديم أفضل مستوى خدمة، وفي حال وجود أي ملاحظات أو شكاوى يمكن التواصل مباشرة مع الإدارة أو خدمة العملاء عبر الأرقام الرسمية لتسوية أي طلب فوراً.
             </p>
@@ -696,7 +641,7 @@ export default function Home() {
       <section className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-600 shadow-sm border border-white">
               <Users className="w-4 h-4" />
               سفراء علامتك التجارية
             </div>
@@ -708,27 +653,26 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {teamFeatures.map((feat, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                whileHover={{ x: -4 }}
-                className="glass rounded-2xl p-5 flex items-start gap-3 shadow-md border-white/80"
+                className="bg-white/85 backdrop-blur-md rounded-2xl p-5 flex items-start gap-3 shadow-md border border-white"
               >
                 <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Check className="w-4 h-4 stroke-[3]" />
                 </div>
                 <span className="font-bold text-slate-700 text-sm leading-relaxed">{feat}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Storage and Warehouses */}
-      <section id="storage" className="py-20 px-4 bg-gradient-to-b from-transparent via-amber-50/40 to-transparent relative z-10">
+      <section id="storage" className="py-20 px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="glass rounded-3xl p-8 sm:p-14 shadow-2xl border-white/80 relative overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 sm:p-14 shadow-2xl border border-white relative overflow-hidden">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8">
                 <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-900 px-3.5 py-1.5 rounded-full text-xs font-black mb-4">
@@ -762,9 +706,9 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-4 text-center">
-                <div className="glass-dark rounded-3xl p-8 text-white shadow-xl">
+                <div className="bg-slate-900 rounded-3xl p-8 text-white shadow-xl">
                   <div className="text-xs font-bold text-slate-400 mb-1">أسعار تنافسية تبدأ من</div>
-                  <div className="text-5xl font-black text-gradient my-2">300</div>
+                  <div className="text-5xl font-black text-amber-400 my-2">300</div>
                   <div className="text-lg font-bold text-amber-400 mb-4">جنيه للمتر شهرياً</div>
                   <a
                     href="https://wa.me/201130491212"
@@ -785,8 +729,7 @@ export default function Home() {
       <section className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* VIP Corporate */}
-            <div className="glass rounded-3xl p-8 sm:p-10 shadow-xl border-white/80">
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-10 shadow-xl border border-white">
               <div className="w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-red-600/30">
                 <Award className="w-6 h-6" />
               </div>
@@ -796,7 +739,7 @@ export default function Home() {
               <p className="text-slate-600 font-bold mb-6">
                 نوفر باقات وعروض خاصة للشركات والمصانع وأصحاب المتاجر الإلكترونية مع أفضل أسعار الشحن والخدمات اللوجستية المميزة.
               </p>
-              <div className="space-y-3 bg-white/70 rounded-2xl p-5 border border-slate-200">
+              <div className="space-y-3 bg-white rounded-2xl p-5 border border-slate-200">
                 <div className="flex justify-between items-center font-bold">
                   <span>التعاقد الشهري:</span>
                   <span className="text-red-600">أكثر من 200 أوردر</span>
@@ -815,8 +758,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Official Trust */}
-            <div className="glass rounded-3xl p-8 sm:p-10 shadow-xl border-white/80">
+            <div className="bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-10 shadow-xl border border-white">
               <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-6 shadow-lg shadow-emerald-600/30">
                 <Shield className="w-6 h-6" />
               </div>
@@ -826,7 +768,7 @@ export default function Home() {
               <p className="text-slate-700 font-bold leading-relaxed mb-6">
                 نحن نعمل وفق إطار قانوني معتمد يشمل سجل تجاري وبطاقة ضريبية، مع وجود مقر إداري ومخازن مجهزة، بالإضافة إلى نظام إدارة متكامل يضمن تنظيم جميع العمليات بدقة واحترافية.
               </p>
-              <div className="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-emerald-900 text-sm font-bold leading-relaxed">
+              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm font-bold leading-relaxed">
                 هذا يضمن لعملائنا التعامل مع جهة موثوقة تعمل بشكل رسمي وآمن، وتقدم خدماتها وفق أعلى معايير التنظيم والشفافية. نضع ثقة العميل وأمان شحناته في المقام الأول.
               </div>
             </div>
@@ -838,7 +780,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-4 bg-slate-900 text-white relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-gradient mb-3">
+            <h2 className="text-4xl sm:text-5xl font-black text-red-500 mb-3">
               تواصل مع شركة النمر للشحن
             </h2>
             <p className="text-slate-400 text-lg font-bold">
@@ -847,8 +789,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-            {/* Phones */}
-            <div className="glass-dark rounded-3xl p-8 text-center border-slate-700">
+            <div className="bg-slate-800 rounded-3xl p-8 text-center border border-slate-700">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-amber-500 text-white flex items-center justify-center mx-auto mb-4">
                 <Phone className="w-7 h-7" />
               </div>
@@ -861,8 +802,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Emails */}
-            <div className="glass-dark rounded-3xl p-8 text-center border-slate-700">
+            <div className="bg-slate-800 rounded-3xl p-8 text-center border border-slate-700">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 text-white flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-7 h-7" />
               </div>
@@ -873,8 +813,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Location */}
-            <div className="glass-dark rounded-3xl p-8 text-center border-slate-700">
+            <div className="bg-slate-800 rounded-3xl p-8 text-center border border-slate-700">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-7 h-7" />
               </div>
@@ -898,10 +837,10 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all animate-glow"
+        className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all"
       >
         <Phone className="w-8 h-8 fill-current" />
       </a>
-    </main>
+    </div>
   );
 }
