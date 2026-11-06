@@ -188,7 +188,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-100 selection:bg-red-600 selection:text-white font-sans overflow-x-hidden relative" dir="rtl">
+    <div className="min-h-screen bg-[#030712] text-slate-100 selection:bg-red-600 selection:text-white font-tinta overflow-x-hidden relative" dir="rtl">
       {/* Background Moving Glow Orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div
@@ -208,7 +208,7 @@ export default function Home() {
         />
       </div>
 
-      {/* 7. Enhanced 3D Background Icons (Visible & Floating) */}
+      {/* Floating 3D Background Icons */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-35">
         <motion.div animate={{ y: [-30, 30, -30], rotate: [0, 15, 0], x: [-10, 10, -10] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="absolute top-28 left-12 text-red-500">
           <Truck className="w-20 h-20" />
@@ -230,7 +230,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* 6. Fixed Sticky Glass Navigation Header */}
+      {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 backdrop-blur-2xl">
           <div className="flex items-center gap-3">
@@ -242,12 +242,12 @@ export default function Home() {
               <Package className="w-7 h-7" />
             </motion.div>
             <div>
-              <div className="text-2xl font-black text-gradient leading-none">النمر للشحن</div>
-              <div className="text-xs font-bold text-amber-400 tracking-wider">EL NMR SHIPPING</div>
+              <div className="text-2xl font-black font-mustopha text-gradient leading-none">النمر للشحن</div>
+              <div className="text-xs font-bold text-amber-400 tracking-wider font-lemon">EL NMR SHIPPING</div>
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6 font-bold text-sm text-slate-300">
+          <nav className="hidden md:flex items-center gap-6 font-bold text-sm text-slate-300 font-tinta">
             <a href="#about" className="hover:text-red-400 transition-colors">من نحن</a>
             <a href="#features" className="hover:text-red-400 transition-colors">المميزات</a>
             <a href="#pricing" className="hover:text-red-400 transition-colors">الأسعار والباقات</a>
@@ -261,7 +261,7 @@ export default function Home() {
             href="https://wa.me/201130491212"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl glow-red hover:scale-105 transition-all"
+            className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl glow-red hover:scale-105 transition-all font-tinta"
           >
             <Phone className="w-4 h-4" />
             <span>طلب مندوب</span>
@@ -269,7 +269,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section with 5. Responsive Aspect Ratio Container */}
+      {/* Hero Section */}
       <section className="relative pt-32 pb-28 px-4 z-10 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Text Content */}
@@ -279,36 +279,35 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7 text-right"
           >
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 border border-amber-500/30 shadow-lg">
+            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 border border-amber-500/30 shadow-lg font-lemon">
               <Sparkles className="w-5 h-5 text-amber-400 animate-spin" />
               <span className="text-sm font-bold text-amber-200">
                 حلول لوجستية متكاملة لجميع المحافظات بأعلى معايير الاحترافية
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-serif-luxury leading-tight mb-6 text-white">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-mustopha leading-tight mb-6 text-white">
               شحنتك في أمان تام مع <br />
               <span className="text-gradient drop-shadow-md">شركة النمر للشحن</span>
             </h1>
 
-            {/* Exact Page 1 Content Box in Glass */}
+            {/* Exact Page 1 Content Box */}
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
               className="glass rounded-3xl p-8 mb-8 border border-white/20 shadow-2xl glow-red relative overflow-hidden"
             >
-              {/* 4. Edge-to-edge top accent line */}
               <div className="absolute top-0 left-0 right-0 w-full h-1.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
-              <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-bold font-serif-luxury pt-2">
+              <p className="text-lg sm:text-xl text-slate-200 leading-relaxed font-bold font-mustopha pt-2">
                 شركة النمر للشحن هي شركة متخصصة في تقديم خدمات لوجستية متكاملة تهدف إلى تسهيل عمليات الشحن والتوصيل للأفراد وأصحاب الأعمال بكفاءة عالية. نعتمد على منظومة تشغيل حديثة تضمن السرعة في التنفيذ والدقة في الأداء مع تغطية شاملة لمختلف المناطق.
               </p>
               <div className="my-5 border-t border-slate-700/80" />
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-tinta">
                 نوفر تجربة خدمة متكاملة تشمل تتبع الشحنات بشكل لحظي وإدارة إلكترونية سهلة ومرنة إلى جانب حلول تحصيل آمنة وسريعة. كما نعمل على تقديم باقات تعاقد متنوعة تناسب احتياجات الأنشطة التجارية المختلفة. تلتزم شركة النمر للشحن بمعايير الجودة والاحترافية في جميع مراحل الخدمة، مع التركيز على التطوير المستمر لتلبية متطلبات السوق وتحقيق أعلى مستويات رضا العملاء.
               </p>
             </motion.div>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4 font-tinta">
               <a
                 href="#calculator"
                 className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-transform"
@@ -325,17 +324,17 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-800">
+            <div className="grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-slate-800 font-tinta">
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-red-500">72h</div>
+                <div className="text-3xl sm:text-4xl font-black text-red-500 font-mustopha">72h</div>
                 <div className="text-xs sm:text-sm font-bold text-slate-400">حد أقصى للوجه البحري</div>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-amber-400">30%</div>
+                <div className="text-3xl sm:text-4xl font-black text-amber-400 font-mustopha">30%</div>
                 <div className="text-xs sm:text-sm font-bold text-slate-400">خصومات باقات VIP</div>
               </div>
               <div>
-                <div className="text-3xl sm:text-4xl font-black text-white">100%</div>
+                <div className="text-3xl sm:text-4xl font-black text-white font-mustopha">100%</div>
                 <div className="text-xs sm:text-sm font-bold text-slate-400">سجل تجاري وبطاقة ضريبية</div>
               </div>
             </div>
@@ -349,11 +348,10 @@ export default function Home() {
             className="lg:col-span-5"
           >
             <div className="relative pt-6">
-              {/* 8. VIP Truck badge centered at the top middle of the box */}
               <motion.div
                 animate={{ y: [-8, 8, -8] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -top-2 left-1/2 -translate-x-1/2 z-20 glass rounded-2xl px-6 py-3 shadow-2xl flex items-center gap-3 border border-amber-500/40 glow-gold whitespace-nowrap"
+                className="absolute -top-2 left-1/2 -translate-x-1/2 z-20 glass rounded-2xl px-6 py-3 shadow-2xl flex items-center gap-3 border border-amber-500/40 glow-gold whitespace-nowrap font-lemon"
               >
                 <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
                   <Truck className="w-5 h-5" />
@@ -365,7 +363,6 @@ export default function Home() {
               </motion.div>
 
               <div className="glass rounded-3xl p-8 shadow-2xl relative z-10 border border-white/20 glow-red overflow-hidden mt-4">
-                {/* 4. Edge-to-edge top accent line */}
                 <div className="absolute top-0 left-0 right-0 w-full h-2.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
 
                 <div className="text-center pt-4 pb-6">
@@ -374,12 +371,12 @@ export default function Home() {
                       <Package className="w-12 h-12 text-red-500" />
                     </div>
                   </div>
-                  <h3 className="text-3xl font-black text-white font-serif-luxury">شركة النمر للشحن</h3>
-                  <p className="text-sm font-bold text-amber-400 mt-1">شريكك اللوجستي الأول في مصر</p>
+                  <h3 className="text-3xl font-black text-white font-mustopha">شركة النمر للشحن</h3>
+                  <p className="text-sm font-bold text-amber-400 mt-1 font-lemon">شريكك اللوجستي الأول في مصر</p>
                 </div>
 
-                <div className="mt-2 space-y-4 bg-slate-900/70 p-6 rounded-2xl border border-white/10">
-                  <h4 className="text-base font-bold text-white text-center">طلب استلام شحنة سريعة</h4>
+                <div className="mt-2 space-y-4 bg-slate-900/70 p-6 rounded-2xl border border-white/10 font-tinta">
+                  <h4 className="text-base font-bold text-white text-center font-mustopha">طلب استلام شحنة سريعة</h4>
                   <p className="text-xs text-slate-300 text-center leading-relaxed">تواصل معنا مباشرة عبر واتساب لتحديد موعد استلام شحنتك خلال دقائق بكل سهولة ويسر</p>
                   <a
                     href="https://wa.me/201130491212?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
@@ -397,25 +394,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1. Interactive Shipping Cost Calculator (Fixed layout, ratio, space, and dividers) */}
+      {/* Interactive Shipping Cost Calculator */}
       <section id="calculator" className="py-20 px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-red-500/30">
+            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-red-500/30 font-lemon">
               <Calculator className="w-4 h-4" />
               حاسبة الباقات التفاعلية
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white font-serif-luxury">
+            <h2 className="text-4xl sm:text-5xl font-black text-white font-mustopha">
               احسب تكلفة شحن أوردراتك مع الخصم
             </h2>
-            <p className="text-slate-300 text-lg mt-2 font-semibold">
+            <p className="text-slate-300 text-lg mt-2 font-semibold font-tinta">
               كلما زادت عدد أوردراتك الشهرية، زادت نسبة خصمك حتى 30%!
             </p>
           </div>
 
           <div className="glass rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/20 glow-red">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
+              <div className="space-y-6 font-tinta">
                 <div>
                   <label className="block text-sm font-black text-slate-200 mb-2">
                     ١. اختر المنطقة الجغرافية
@@ -438,7 +435,7 @@ export default function Home() {
                     <label className="text-sm font-black text-slate-200">
                       ٢. عدد الأوردرات المتوقعة
                     </label>
-                    <span className="text-2xl font-black text-red-500">{calcOrders} أوردر</span>
+                    <span className="text-2xl font-black text-red-500 font-mustopha">{calcOrders} أوردر</span>
                   </div>
                   <input
                     type="range"
@@ -467,9 +464,9 @@ export default function Home() {
               </div>
 
               {/* Calculator Output with Stacked Vertical Rows and Thicker Bold Text */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 text-center relative overflow-hidden shadow-2xl border border-white/10 glow-gold">
-                <div className="text-sm font-black text-slate-300 mb-2 tracking-wide">التكلفة بعد الخصم المباشر</div>
-                <div className="text-5xl sm:text-6xl font-black text-amber-400 my-4 font-serif-luxury tracking-tight">
+              <div className="bg-slate-900 text-white rounded-3xl p-8 text-center relative overflow-hidden shadow-2xl border border-white/10 glow-gold font-tinta">
+                <div className="text-sm font-black text-slate-300 mb-2 tracking-wide font-lemon">التكلفة بعد الخصم المباشر</div>
+                <div className="text-5xl sm:text-6xl font-black text-amber-400 my-4 font-mustopha tracking-tight">
                   {finalCost.toLocaleString()} <span className="text-2xl font-black text-white">جنيه</span>
                 </div>
 
@@ -488,7 +485,7 @@ export default function Home() {
                   href="https://wa.me/201130491212"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 block w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-all shadow-xl"
+                  className="mt-8 block w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-all shadow-xl font-mustopha"
                 >
                   تعاقد على هذه الباقة الآن
                 </a>
@@ -502,19 +499,19 @@ export default function Home() {
       <section id="features" className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10">
+            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10 font-lemon">
               <Star className="w-4 h-4 fill-current text-amber-400" />
               أفضل جودة وخدمة
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white font-serif-luxury">
+            <h2 className="text-4xl sm:text-5xl font-black text-white font-mustopha">
               لماذا تختار النمر للشحن؟
             </h2>
-            <p className="text-slate-300 text-lg mt-2 max-w-2xl mx-auto font-semibold">
+            <p className="text-slate-300 text-lg mt-2 max-w-2xl mx-auto font-semibold font-tinta">
               حلول شحن متكاملة تجمع بين السرعة، الأمان، والاحترافية لتنمية أعمالك بثقة
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 font-tinta">
             {features.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -525,7 +522,7 @@ export default function Home() {
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center mb-5 shadow-lg glow-red`}>
                     <item.icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-black text-white mb-3 font-serif-luxury">{item.title}</h3>
+                  <h3 className="text-xl font-black text-white mb-3 font-mustopha">{item.title}</h3>
                   <p className="text-slate-300 text-sm leading-relaxed font-semibold">{item.description}</p>
                 </div>
               </motion.div>
@@ -538,19 +535,19 @@ export default function Home() {
       <section id="pricing" className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10">
+            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10 font-lemon">
               <Percent className="w-4 h-4" />
               باقات الشحن الشهرية
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white font-serif-luxury">
+            <h2 className="text-4xl sm:text-5xl font-black text-white font-mustopha">
               باقات الشحن حسب عدد الأوردرات
             </h2>
-            <p className="text-slate-300 text-lg mt-2 font-semibold">
+            <p className="text-slate-300 text-lg mt-2 font-semibold font-tinta">
               خصومات حصرية وتوفير حقيقي مع كل شحنة
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16 font-tinta">
             {pricingTiers.map((tier, idx) => (
               <motion.div
                 key={idx}
@@ -560,15 +557,15 @@ export default function Home() {
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute -top-3.5 right-6 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">
+                  <div className="absolute -top-3.5 right-6 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-full shadow-lg font-lemon">
                     الأكثر طلباً للتجار
                   </div>
                 )}
                 <div>
                   <div className="text-xs font-bold text-slate-400 mb-1">{tier.orders}</div>
-                  <h3 className="text-2xl font-black text-white mb-4 font-serif-luxury">{tier.name}</h3>
+                  <h3 className="text-2xl font-black text-white mb-4 font-mustopha">{tier.name}</h3>
 
-                  <div className="text-4xl font-black text-red-500 mb-2">{tier.discount}</div>
+                  <div className="text-4xl font-black text-red-500 mb-2 font-mustopha">{tier.discount}</div>
                   <div className="text-sm font-bold text-emerald-400 mb-4">{tier.savings}</div>
 
                   {tier.bonus && (
@@ -582,7 +579,7 @@ export default function Home() {
                   href="https://wa.me/201130491212"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white text-sm font-black glow-red transition-all hover:scale-105"
+                  className="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white text-sm font-black glow-red transition-all hover:scale-105 font-mustopha"
                 >
                   اختيار الباقة
                 </a>
@@ -590,14 +587,14 @@ export default function Home() {
             ))}
           </div>
 
-          {/* 3. Region Shipping Rates Table (Last item centered when alone on row) */}
-          <div className="glass rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/20">
+          {/* Region Shipping Rates Table */}
+          <div className="glass rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/20 font-tinta">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
               <div>
-                <h3 className="text-3xl font-black text-white font-serif-luxury">أسعار الشحن حسب المناطق والمحافظات</h3>
+                <h3 className="text-3xl font-black text-white font-mustopha">أسعار الشحن حسب المناطق والمحافظات</h3>
                 <p className="text-slate-300 font-bold mt-1">أسعار واضحة ومحددة بدون أي رسوم خفية</p>
               </div>
-              <div className="text-xs font-black bg-red-500/10 text-red-400 border border-red-500/30 px-4 py-2 rounded-xl shadow-sm">
+              <div className="text-xs font-black bg-red-500/10 text-red-400 border border-red-500/30 px-4 py-2 rounded-xl shadow-sm font-lemon">
                 تطبق الخصومات الإضافية للباقات
               </div>
             </div>
@@ -616,7 +613,7 @@ export default function Home() {
                       <MapPin className="w-5 h-5 text-red-500 flex-shrink-0" />
                       <span className="font-bold text-slate-200 text-sm">{reg.name}</span>
                     </div>
-                    <span className="font-black text-amber-400 text-base">{reg.price}</span>
+                    <span className="font-black text-amber-400 text-base font-mustopha">{reg.price}</span>
                   </div>
                 );
               })}
@@ -626,14 +623,14 @@ export default function Home() {
       </section>
 
       {/* Pages 2-3 Policies & Handling Section */}
-      <section id="policy" className="py-20 px-4 relative z-10">
+      <section id="policy" className="py-20 px-4 relative z-10 font-tinta">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10">
+            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10 font-lemon">
               <Shield className="w-4 h-4" />
               الشفافية والمصداقية
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white font-serif-luxury">
+            <h2 className="text-4xl sm:text-5xl font-black text-white font-mustopha">
               سياسة الشحن والتعامل
             </h2>
             <p className="text-slate-300 text-lg mt-2 max-w-2xl mx-auto font-semibold">
@@ -645,10 +642,10 @@ export default function Home() {
             {policyPoints.map((item, idx) => (
               <div key={idx} className="glass rounded-3xl p-6 shadow-xl border border-white/15">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-black">
+                  <div className="w-10 h-10 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-black font-mustopha">
                     {idx + 1}
                   </div>
-                  <h3 className="text-lg font-black text-white font-serif-luxury">{item.title}</h3>
+                  <h3 className="text-lg font-black text-white font-mustopha">{item.title}</h3>
                 </div>
                 <p className="text-sm font-bold text-slate-300 leading-relaxed">{item.text}</p>
               </div>
@@ -664,14 +661,14 @@ export default function Home() {
       </section>
 
       {/* Couriers / Team Advantages */}
-      <section className="py-20 px-4 relative z-10">
+      <section className="py-20 px-4 relative z-10 font-tinta">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10">
+            <div className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full mb-3 text-sm font-bold text-red-400 shadow-lg border border-white/10 font-lemon">
               <Users className="w-4 h-4" />
               سفراء علامتك التجارية
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white font-serif-luxury">
+            <h2 className="text-4xl sm:text-5xl font-black text-white font-mustopha">
               مميزات العمل مع مندوبينا
             </h2>
             <p className="text-slate-300 text-lg mt-2 font-semibold">
@@ -696,16 +693,16 @@ export default function Home() {
       </section>
 
       {/* Storage and Warehouses */}
-      <section id="storage" className="py-20 px-4 relative z-10">
+      <section id="storage" className="py-20 px-4 relative z-10 font-tinta">
         <div className="max-w-6xl mx-auto">
           <div className="glass rounded-3xl p-8 sm:p-14 shadow-2xl border border-white/20 relative overflow-hidden glow-gold">
             <div className="grid lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8">
-                <div className="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-black mb-4 border border-amber-500/30">
+                <div className="inline-flex items-center gap-2 bg-amber-500/20 text-amber-300 px-3.5 py-1.5 rounded-full text-xs font-black mb-4 border border-amber-500/30 font-lemon">
                   <Warehouse className="w-4 h-4 text-amber-400" />
                   مساحات تخزين مرنة
                 </div>
-                <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 font-serif-luxury">
+                <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 font-mustopha">
                   خدمات التخزين والمخازن الاحترافية
                 </h2>
                 <p className="text-slate-300 font-bold leading-relaxed mb-6">
@@ -733,14 +730,14 @@ export default function Home() {
 
               <div className="lg:col-span-4 text-center">
                 <div className="bg-slate-900/90 rounded-3xl p-8 text-white shadow-2xl border border-white/20 glow-red">
-                  <div className="text-xs font-bold text-slate-400 mb-1">أسعار تنافسية تبدأ من</div>
-                  <div className="text-5xl font-black text-amber-400 my-2 font-serif-luxury">300</div>
-                  <div className="text-lg font-bold text-amber-400 mb-4">جنيه للمتر شهرياً</div>
+                  <div className="text-xs font-bold text-slate-400 mb-1 font-lemon">أسعار تنافسية تبدأ من</div>
+                  <div className="text-5xl font-black text-amber-400 my-2 font-mustopha">300</div>
+                  <div className="text-lg font-bold text-amber-400 mb-4 font-lemon">جنيه للمتر شهرياً</div>
                   <a
                     href="https://wa.me/201130491212"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-sm transition-colors shadow-lg"
+                    className="block w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-sm transition-colors shadow-lg font-mustopha"
                   >
                     حجز مساحة تخزين
                   </a>
@@ -752,14 +749,14 @@ export default function Home() {
       </section>
 
       {/* Corporate VIP Contracts & Official Registration */}
-      <section className="py-20 px-4 relative z-10">
+      <section className="py-20 px-4 relative z-10 font-tinta">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="glass rounded-3xl p-8 sm:p-10 shadow-xl border border-white/15">
               <div className="w-12 h-12 rounded-2xl bg-red-600 text-white flex items-center justify-center mb-6 shadow-lg glow-red">
                 <Award className="w-6 h-6" />
               </div>
-              <h3 className="text-3xl font-black text-white mb-3 font-serif-luxury">
+              <h3 className="text-3xl font-black text-white mb-3 font-mustopha">
                 عروض VIP للشركات والمصانع
               </h3>
               <p className="text-slate-300 font-bold mb-6">
@@ -768,15 +765,15 @@ export default function Home() {
               <div className="space-y-3 bg-slate-900/70 rounded-2xl p-5 border border-white/10">
                 <div className="flex justify-between items-center font-bold">
                   <span className="text-slate-300">التعاقد الشهري:</span>
-                  <span className="text-red-400 font-black">أكثر من 200 أوردر</span>
+                  <span className="text-red-400 font-black font-mustopha">أكثر من 200 أوردر</span>
                 </div>
                 <div className="flex justify-between items-center font-bold">
                   <span className="text-slate-300">سعر الوجه البحري للشركات:</span>
-                  <span className="text-emerald-400 text-lg font-black">100 جنيه</span>
+                  <span className="text-emerald-400 text-lg font-black font-mustopha">100 جنيه</span>
                 </div>
                 <div className="flex justify-between items-center font-bold">
                   <span className="text-slate-300">سعر الوجه القبلي للشركات:</span>
-                  <span className="text-emerald-400 text-lg font-black">120 جنيه</span>
+                  <span className="text-emerald-400 text-lg font-black font-mustopha">120 جنيه</span>
                 </div>
                 <div className="text-xs text-slate-400 pt-2 border-t border-slate-800 font-bold">
                   * الحد الأقصى للوزن الأساسي 2 كجم، وكل كجم إضافي 10 جنيهات فقط.
@@ -788,7 +785,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center mb-6 shadow-lg glow-gold">
                 <Shield className="w-6 h-6" />
               </div>
-              <h3 className="text-3xl font-black text-white mb-3 font-serif-luxury">
+              <h3 className="text-3xl font-black text-white mb-3 font-mustopha">
                 ثقة واعتماد رسمي وقانوني
               </h3>
               <p className="text-slate-300 font-bold leading-relaxed mb-6">
@@ -803,10 +800,10 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-slate-950 text-white relative z-10 border-t border-slate-800">
+      <section id="contact" className="py-20 px-4 bg-slate-950 text-white relative z-10 border-t border-slate-800 font-tinta">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-gradient mb-3 font-serif-luxury">
+            <h2 className="text-4xl sm:text-5xl font-black text-gradient mb-3 font-mustopha">
               تواصل مع شركة النمر للشحن
             </h2>
             <p className="text-slate-400 text-lg font-bold">
@@ -819,7 +816,7 @@ export default function Home() {
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-600 to-amber-500 text-white flex items-center justify-center mx-auto mb-4 shadow-lg glow-red">
                 <Phone className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-black mb-3 font-serif-luxury">أرقام الهواتف</h3>
+              <h3 className="text-xl font-black mb-3 font-mustopha">أرقام الهواتف</h3>
               <div className="space-y-1 font-bold text-slate-300 dir-ltr text-lg">
                 <div>01130491212</div>
                 <div>01119383101</div>
@@ -832,7 +829,7 @@ export default function Home() {
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 text-white flex items-center justify-center mx-auto mb-4 shadow-lg glow-gold">
                 <Mail className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-black mb-3 font-serif-luxury">البريد الإلكتروني</h3>
+              <h3 className="text-xl font-black mb-3 font-mustopha">البريد الإلكتروني</h3>
               <div className="space-y-2 font-bold text-slate-300 text-sm">
                 <div>online@elnmrshipping.com</div>
                 <div>logistics@elnmrshipping.com.eg</div>
@@ -843,7 +840,7 @@ export default function Home() {
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <MapPin className="w-7 h-7" />
               </div>
-              <h3 className="text-xl font-black mb-3 font-serif-luxury">المقر الإداري</h3>
+              <h3 className="text-xl font-black mb-3 font-mustopha">المقر الإداري</h3>
               <p className="font-bold text-slate-300 text-base">
                 جمهورية مصر العربية <br />
                 الإسكندرية - الإبراهيمية

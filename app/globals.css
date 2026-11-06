@@ -4,11 +4,23 @@
   body {
     background-color: #030712;
     color: #f8fafc;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Amiri', 'Cairo', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6, .font-serif-luxury {
-    font-family: 'Changa', 'Cairo', sans-serif !important;
+  /* Mustopha font equivalent for company name & main title */
+  .font-mustopha, h1, .company-title {
+    font-family: 'Lalezar', 'Changa', sans-serif !important;
+    letter-spacing: 0.5px;
+  }
+
+  /* Lemon Brush font equivalent for section titles & badges */
+  .font-lemon, h2, h3, .section-title {
+    font-family: 'Reem Kufi', 'Changa', sans-serif !important;
+  }
+
+  /* Tinta Arabic font equivalent for body text and paragraphs */
+  .font-tinta, p, span, div, body {
+    font-family: 'Amiri', 'Cairo', sans-serif !important;
   }
 
   html {
