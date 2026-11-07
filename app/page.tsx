@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Package,
   Truck,
@@ -295,7 +295,7 @@ export default function Home() {
           </nav>
 
           <a
-            href="tel:01130491212"
+            href="tel:01553999935"
             className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl glow-red hover:scale-105 transition-all font-kidzhood"
           >
             <Phone className="w-4 h-4" />
@@ -422,7 +422,7 @@ export default function Home() {
                   <h4 className="text-base font-bold text-white text-center font-mahameru">طلب استلام شحنة سريعة</h4>
                   <p className="text-xs text-slate-300 text-center leading-relaxed">تواصل معنا مباشرة عبر واتساب لتحديد موعد استلام شحنتك خلال دقائق بكل سهولة ويسر</p>
                   <a
-                    href="https://wa.me/201130491212?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
+                    href="https://wa.me/201553999935?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full text-center py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-base shadow-xl glow-gold hover:scale-105 transition-all flex items-center justify-center gap-2"
@@ -563,7 +563,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="https://wa.me/201130491212"
+                  href="https://wa.me/201553999935"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 block w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-all shadow-xl font-mahameru"
@@ -657,7 +657,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="https://wa.me/201130491212"
+                  href="https://wa.me/201553999935"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white text-sm font-black glow-red transition-all hover:scale-105 font-mahameru"
@@ -815,7 +815,7 @@ export default function Home() {
                   <div className="text-5xl font-black text-amber-400 my-2 font-mahameru">300</div>
                   <div className="text-lg font-bold text-amber-400 mb-4 font-tufuli">جنيه للمتر شهرياً</div>
                   <a
-                    href="https://wa.me/201130491212"
+                    href="https://wa.me/201553999935"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-sm transition-colors shadow-lg font-mahameru"
@@ -899,7 +899,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-black mb-3 font-mahameru">أرقام الهواتف</h3>
               <div className="space-y-1 font-bold text-slate-300 dir-ltr text-lg">
-                <div>01130491212</div>
+                <div>01553999935</div>
                 <div>01119383101</div>
                 <div>01553999935</div>
                 <div>0359380077</div>
@@ -937,7 +937,7 @@ export default function Home() {
 
       {/* Floating Direct Call Button (Red, Redirects to Phone Calls, Glowing every few secs) */}
       <motion.a
-        href="tel:01130491212"
+        href="tel:01553999935"
         aria-label="Call Us"
         animate={{
           scale: [1, 1.15, 1],
