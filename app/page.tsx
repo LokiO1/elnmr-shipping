@@ -30,7 +30,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
+import { Logo } from '@/components/Logo';
 
 export default function Home() {
   const [calcRegion, setCalcRegion] = useState('cairo');
@@ -269,15 +269,8 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 backdrop-blur-2xl">
           <div className="flex items-center gap-3">
-            {/* Logo Image with background blend mode so white bg is seamless */}
-            <div className="w-12 h-12 rounded-xl overflow-hidden relative shadow-lg glow-red border border-red-500/30 flex-shrink-0 bg-white">
-              <Image
-                src="/images/logo.jpg"
-                alt="El NMR Shipping Logo"
-                fill
-                className="object-contain mix-blend-multiply"
-              />
-            </div>
+            {/* Transparent SVG Logo (No Background Box) */}
+            <Logo className="w-12 h-12 flex-shrink-0" />
             <div>
               <div className="text-2xl font-black font-mahameru text-red-600 leading-none">النمر للشحن</div>
               <div className="text-xs font-bold text-red-400 tracking-wider font-tufuli">EL NMR SHIPPING</div>
@@ -406,13 +399,9 @@ export default function Home() {
                 <div className="absolute top-0 left-0 right-0 w-full h-2.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
 
                 <div className="text-center pt-4 pb-6">
-                  <div className="w-24 h-24 mx-auto rounded-3xl overflow-hidden relative shadow-2xl glow-red border-2 border-red-500/40 mb-4 bg-white">
-                    <Image
-                      src="/images/logo.jpg"
-                      alt="El NMR Shipping Logo"
-                      fill
-                      className="object-contain mix-blend-multiply"
-                    />
+                  {/* Transparent Logo Component */}
+                  <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                    <Logo className="w-24 h-24 filter drop-shadow-lg" />
                   </div>
                   <h3 className="text-3xl font-black text-white font-mahameru">شركة النمر للشحن</h3>
                   <p className="text-sm font-bold text-red-400 mt-1 font-tufuli">شريكك اللوجستي الأول في مصر</p>
@@ -422,7 +411,7 @@ export default function Home() {
                   <h4 className="text-base font-bold text-white text-center font-mahameru">طلب استلام شحنة سريعة</h4>
                   <p className="text-xs text-slate-300 text-center leading-relaxed">تواصل معنا مباشرة عبر واتساب لتحديد موعد استلام شحنتك خلال دقائق بكل سهولة ويسر</p>
                   <a
-                    href="https://wa.me/201553999935?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
+                    href="https://wa.me/201130491212?text=مرحباً، أرغب في طلب مندوب لاستلام شحنة جديدة من شركة النمر للشحن."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full text-center py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-black text-base shadow-xl glow-gold hover:scale-105 transition-all flex items-center justify-center gap-2"
@@ -563,7 +552,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="https://wa.me/201553999935"
+                  href="https://wa.me/201130491212"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 block w-full py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-all shadow-xl font-mahameru"
@@ -657,7 +646,7 @@ export default function Home() {
                 </div>
 
                 <a
-                  href="https://wa.me/201553999935"
+                  href="https://wa.me/201130491212"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-amber-500 text-white text-sm font-black glow-red transition-all hover:scale-105 font-mahameru"
@@ -815,7 +804,7 @@ export default function Home() {
                   <div className="text-5xl font-black text-amber-400 my-2 font-mahameru">300</div>
                   <div className="text-lg font-bold text-amber-400 mb-4 font-tufuli">جنيه للمتر شهرياً</div>
                   <a
-                    href="https://wa.me/201553999935"
+                    href="https://wa.me/201130491212"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-black text-sm transition-colors shadow-lg font-mahameru"
@@ -870,7 +859,7 @@ export default function Home() {
                 ثقة واعتماد رسمي وقانوني
               </h3>
               <p className="text-slate-300 font-bold leading-relaxed mb-6">
-                نحن نعمل وفق إطار قانوني معتمد يشمل سجل تجاري وبطاقة ضريبية، مع وجود مقر إداري ومخازن مجهزة، بالإضافة إلى نظام إدارة متكامل يضمن تنظيم جميع العمليات بدقة واحترإفية.
+                نحن نعمل وفق إطار قانوني معتمد يشمل سجل تجاري وبطاقة ضريبية، مع وجود مقر إداري ومخازن مجهزة، بالإضافة إلى نظام إدارة متكامل يضمن تنظيم جميع العمليات بدقة واحترافية.
               </p>
               <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm font-bold leading-relaxed">
                 هذا يضمن لعملائنا التعامل مع جهة موثوقة تعمل بشكل رسمي وآمن، وتقدم خدماتها وفق أعلى معايير التنظيم والشفافية. نضع ثقة العميل وأمان شحناته في المقام الأول.
@@ -899,7 +888,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-black mb-3 font-mahameru">أرقام الهواتف</h3>
               <div className="space-y-1 font-bold text-slate-300 dir-ltr text-lg">
-                <div>01553999935</div>
+                <div>01130491212</div>
                 <div>01119383101</div>
                 <div>01553999935</div>
                 <div>0359380077</div>
