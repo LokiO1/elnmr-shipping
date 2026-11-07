@@ -30,6 +30,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
   const [calcRegion, setCalcRegion] = useState('cairo');
@@ -46,7 +47,6 @@ export default function Home() {
 
   useEffect(() => {
     const handleTyping = () => {
-      const i = loopNum % 1;
       const fullText = fullTitleText;
 
       if (isDeleting) {
@@ -71,8 +71,8 @@ export default function Home() {
 
   const regionPrices: Record<string, { name: string; shortName: string; base: number }> = {
     cairo: { name: 'القاهرة / الجيزة', shortName: 'القاهرة / الجيزة', base: 120 },
-    alex_in: { name: 'الإسكندرية (داخل)', shortName: 'الإسكندرية (داخل)', base: 90 }, // Updated to 90
-    alex_out: { name: 'الإسكندرية (خارج)', shortName: 'الإسكندرية (خارج)', base: 70 }, // Updated to 70
+    alex_in: { name: 'الإسكندرية (داخل)', shortName: 'الإسكندرية (داخل)', base: 70 }, // Corrected: داخل = 70
+    alex_out: { name: 'الإسكندرية (خارج)', shortName: 'الإسكندرية (خارج)', base: 90 }, // Corrected: خارج = 90
     delta: { name: 'الدلتا والبحيرة وبورسعيد', shortName: 'الدلتا والمحافظات', base: 100 },
     upper_near: { name: 'الصعيد القريب (المنيا، بني سويف، أسيوط...)', shortName: 'الصعيد القريب', base: 150 },
     upper_far: { name: 'الصعيد البعيد (أسوان، قنا، الوادي الجديد...)', shortName: 'الصعيد البعيد', base: 180 },
@@ -203,8 +203,8 @@ export default function Home() {
 
   const regions = [
     { name: 'القاهرة / الجيزة', price: '120 جنيه' },
-    { name: 'الإسكندرية (داخل)', price: '90 جنيه' }, // Updated
-    { name: 'الإسكندرية (خارج)', price: '70 جنيه' }, // Updated
+    { name: 'الإسكندرية (داخل)', price: '70 جنيه' }, // Corrected: داخل = 70
+    { name: 'الإسكندرية (خارج)', price: '90 جنيه' }, // Corrected: خارج = 90
     { name: 'الدلتا والبحيرة وبورسعيد ودمياط والشرقية', price: '100 جنيه' },
     { name: 'الصعيد القريب (المنيا، بني سويف، الفيوم، أسيوط)', price: '150 جنيه' },
     { name: 'الصعيد البعيد (سوهاج، قنا، الأقصر، أسوان، البحر الأحمر)', price: '180 جنيه' },
@@ -280,14 +280,15 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 backdrop-blur-2xl">
           <div className="flex items-center gap-3">
-            {/* Red Logo Icon */}
-            <motion.div
-              whileHover={{ rotate: 360, scale: 1.1 }}
-              transition={{ duration: 0.8 }}
-              className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center text-white shadow-lg glow-red"
-            >
-              <Package className="w-7 h-7" />
-            </motion.div>
+            {/* New Official Logo Image */}
+            <div className="w-12 h-12 rounded-xl overflow-hidden relative shadow-lg glow-red border border-red-500/30 flex-shrink-0">
+              <Image
+                src="/images/logo.jpg"
+                alt="El NMR Shipping Logo"
+                fill
+                className="object-cover"
+              />
+            </div>
             <div>
               <div className="text-2xl font-black font-mahameru text-red-600 leading-none">النمر للشحن</div>
               <div className="text-xs font-bold text-red-400 tracking-wider font-tufuli">EL NMR SHIPPING</div>
@@ -414,11 +415,13 @@ export default function Home() {
                 <div className="absolute top-0 left-0 right-0 w-full h-2.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
 
                 <div className="text-center pt-4 pb-6">
-                  {/* Red Logo Accent */}
-                  <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-red-600 to-red-700 p-1 shadow-2xl glow-red flex items-center justify-center mb-4">
-                    <div className="w-full h-full bg-slate-900 rounded-[22px] flex items-center justify-center">
-                      <Package className="w-12 h-12 text-red-500" />
-                    </div>
+                  <div className="w-24 h-24 mx-auto rounded-3xl overflow-hidden relative shadow-2xl glow-red border-2 border-red-500/40 mb-4">
+                    <Image
+                      src="/images/logo.jpg"
+                      alt="El NMR Shipping Logo"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <h3 className="text-3xl font-black text-white font-mahameru">شركة النمر للشحن</h3>
                   <p className="text-sm font-bold text-red-400 mt-1 font-tufuli">شريكك اللوجستي الأول في مصر</p>
@@ -941,16 +944,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Floating WhatsApp Button */}
-      <a
+      {/* Floating WhatsApp Button with Red Color & Periodic Pulsing Glow */}
+      <motion.a
         href="https://wa.me/201130491212"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all glow-gold"
+        animate={{ scale: [1, 1.15, 1], boxShadow: ["0 0 0px rgba(220,38,38,0)", "0 0 25px rgba(220,38,38,0.8)", "0 0 0px rgba(220,38,38,0)"] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all glow-red cursor-pointer"
       >
         <Phone className="w-8 h-8 fill-current" />
-      </a>
+      </motion.a>
     </div>
   );
 }
