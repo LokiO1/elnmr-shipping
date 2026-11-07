@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Package,
   Truck,
@@ -38,41 +38,30 @@ export default function Home() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Typewriter animation state for hero title
+  // Typewriter animation state for hero title (Runs only once)
   const fullTitleText = "شحنتك في أمان تام مع شركة النمر للشحن";
   const [typedText, setTypedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(100);
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    const handleTyping = () => {
-      const fullText = fullTitleText;
-
-      if (isDeleting) {
-        setTypedText(fullText.substring(0, typedText.length - 1));
-        setTypingSpeed(50);
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= fullTitleText.length) {
+        setTypedText(fullTitleText.slice(0, currentIndex));
+        currentIndex++;
       } else {
-        setTypedText(fullText.substring(0, typedText.length + 1));
-        setTypingSpeed(100);
+        clearInterval(interval);
+        setIsComplete(true);
       }
+    }, 80);
 
-      if (!isDeleting && typedText === fullText) {
-        setTimeout(() => setIsDeleting(true), 3000);
-      } else if (isDeleting && typedText === '') {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [typedText, isDeleting, loopNum, typingSpeed]);
+    return () => clearInterval(interval);
+  }, []);
 
   const regionPrices: Record<string, { name: string; shortName: string; base: number }> = {
     cairo: { name: 'القاهرة / الجيزة', shortName: 'القاهرة / الجيزة', base: 120 },
-    alex_in: { name: 'الإسكندرية (داخل)', shortName: 'الإسكندرية (داخل)', base: 70 }, // Corrected: داخل = 70
-    alex_out: { name: 'الإسكندرية (خارج)', shortName: 'الإسكندرية (خارج)', base: 90 }, // Corrected: خارج = 90
+    alex_in: { name: 'الإسكندرية (داخل)', shortName: 'الإسكندرية (داخل)', base: 70 },
+    alex_out: { name: 'الإسكندرية (خارج)', shortName: 'الإسكندرية (خارج)', base: 90 },
     delta: { name: 'الدلتا والبحيرة وبورسعيد', shortName: 'الدلتا والمحافظات', base: 100 },
     upper_near: { name: 'الصعيد القريب (المنيا، بني سويف، أسيوط...)', shortName: 'الصعيد القريب', base: 150 },
     upper_far: { name: 'الصعيد البعيد (أسوان، قنا، الوادي الجديد...)', shortName: 'الصعيد البعيد', base: 180 },
@@ -203,8 +192,8 @@ export default function Home() {
 
   const regions = [
     { name: 'القاهرة / الجيزة', price: '120 جنيه' },
-    { name: 'الإسكندرية (داخل)', price: '70 جنيه' }, // Corrected: داخل = 70
-    { name: 'الإسكندرية (خارج)', price: '90 جنيه' }, // Corrected: خارج = 90
+    { name: 'الإسكندرية (داخل)', price: '70 جنيه' },
+    { name: 'الإسكندرية (خارج)', price: '90 جنيه' },
     { name: 'الدلتا والبحيرة وبورسعيد ودمياط والشرقية', price: '100 جنيه' },
     { name: 'الصعيد القريب (المنيا، بني سويف، الفيوم، أسيوط)', price: '150 جنيه' },
     { name: 'الصعيد البعيد (سوهاج، قنا، الأقصر، أسوان، البحر الأحمر)', price: '180 جنيه' },
@@ -280,13 +269,13 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
         <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3.5 flex items-center justify-between shadow-2xl border border-white/10 backdrop-blur-2xl">
           <div className="flex items-center gap-3">
-            {/* New Official Logo Image */}
-            <div className="w-12 h-12 rounded-xl overflow-hidden relative shadow-lg glow-red border border-red-500/30 flex-shrink-0">
+            {/* Logo Image with background blend mode so white bg is seamless */}
+            <div className="w-12 h-12 rounded-xl overflow-hidden relative shadow-lg glow-red border border-red-500/30 flex-shrink-0 bg-white">
               <Image
                 src="/images/logo.jpg"
                 alt="El NMR Shipping Logo"
                 fill
-                className="object-cover"
+                className="object-contain mix-blend-multiply"
               />
             </div>
             <div>
@@ -306,13 +295,11 @@ export default function Home() {
           </nav>
 
           <a
-            href="https://wa.me/201130491212"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="tel:01130491212"
             className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl glow-red hover:scale-105 transition-all font-kidzhood"
           >
             <Phone className="w-4 h-4" />
-            <span>طلب مندوب</span>
+            <span>اتصل بنا</span>
           </a>
         </div>
       </header>
@@ -334,10 +321,10 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Typewriter Animated Hero Title */}
+            {/* Typewriter Animated Hero Title (Runs Only Once) */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black font-mahameru leading-tight mb-6 text-white min-h-[1.5em]">
               {typedText}
-              <span className="animate-pulse text-red-500">|</span>
+              {!isComplete && <span className="animate-pulse text-red-500 mr-1">|</span>}
             </h1>
 
             {/* Exact Page 1 Content Box */}
@@ -356,20 +343,24 @@ export default function Home() {
               </p>
             </motion.div>
 
+            {/* Glowing & Flowing CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 font-kidzhood">
               <a
                 href="#calculator"
-                className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-amber-500 text-white font-black text-lg glow-red hover:scale-105 transition-transform"
+                className="relative group overflow-hidden px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-500 text-white font-black text-lg shadow-2xl glow-red hover:scale-105 transition-all duration-300 flex items-center gap-2 border border-red-400/30"
               >
-                <Calculator className="w-5 h-5" />
-                احسب تكلفة شحنتك الآن
+                <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <Calculator className="w-5 h-5 relative z-10" />
+                <span className="relative z-10">احسب تكلفة شحنتك الآن</span>
               </a>
+
               <a
                 href="#pricing"
-                className="flex items-center gap-2 px-8 py-4 rounded-2xl glass font-black text-lg text-slate-200 hover:scale-105 transition-transform border border-white/10"
+                className="relative group overflow-hidden px-8 py-4 rounded-2xl glass font-black text-lg text-slate-100 hover:scale-105 transition-all duration-300 border border-white/20 shadow-xl glow-gold flex items-center gap-2"
               >
-                استعراض الباقات والخصومات
-                <ArrowRight className="w-5 h-5 rotate-180" />
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-500/20 to-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <span className="relative z-10">استعراض الباقات والخصومات</span>
+                <ArrowRight className="w-5 h-5 rotate-180 relative z-10" />
               </a>
             </div>
 
@@ -415,12 +406,12 @@ export default function Home() {
                 <div className="absolute top-0 left-0 right-0 w-full h-2.5 bg-gradient-to-r from-red-600 via-amber-500 to-red-600" />
 
                 <div className="text-center pt-4 pb-6">
-                  <div className="w-24 h-24 mx-auto rounded-3xl overflow-hidden relative shadow-2xl glow-red border-2 border-red-500/40 mb-4">
+                  <div className="w-24 h-24 mx-auto rounded-3xl overflow-hidden relative shadow-2xl glow-red border-2 border-red-500/40 mb-4 bg-white">
                     <Image
                       src="/images/logo.jpg"
                       alt="El NMR Shipping Logo"
                       fill
-                      className="object-cover"
+                      className="object-contain mix-blend-multiply"
                     />
                   </div>
                   <h3 className="text-3xl font-black text-white font-mahameru">شركة النمر للشحن</h3>
@@ -879,7 +870,7 @@ export default function Home() {
                 ثقة واعتماد رسمي وقانوني
               </h3>
               <p className="text-slate-300 font-bold leading-relaxed mb-6">
-                نحن نعمل وفق إطار قانوني معتمد يشمل سجل تجاري وبطاقة ضريبية، مع وجود مقر إداري ومخازن مجهزة، بالإضافة إلى نظام إدارة متكامل يضمن تنظيم جميع العمليات بدقة واحترافية.
+                نحن نعمل وفق إطار قانوني معتمد يشمل سجل تجاري وبطاقة ضريبية، مع وجود مقر إداري ومخازن مجهزة، بالإضافة إلى نظام إدارة متكامل يضمن تنظيم جميع العمليات بدقة واحترإفية.
               </p>
               <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm font-bold leading-relaxed">
                 هذا يضمن لعملائنا التعامل مع جهة موثوقة تعمل بشكل رسمي وآمن، وتقدم خدماتها وفق أعلى معايير التنظيم والشفافية. نضع ثقة العميل وأمان شحناته في المقام الأول.
@@ -944,13 +935,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Floating WhatsApp Button with Red Color & Periodic Pulsing Glow */}
+      {/* Floating Direct Call Button (Red, Redirects to Phone Calls, Glowing every few secs) */}
       <motion.a
-        href="https://wa.me/201130491212"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="WhatsApp"
-        animate={{ scale: [1, 1.15, 1], boxShadow: ["0 0 0px rgba(220,38,38,0)", "0 0 25px rgba(220,38,38,0.8)", "0 0 0px rgba(220,38,38,0)"] }}
+        href="tel:01130491212"
+        aria-label="Call Us"
+        animate={{
+          scale: [1, 1.15, 1],
+          boxShadow: [
+            "0 0 0px rgba(220,38,38,0)",
+            "0 0 30px rgba(220,38,38,0.9)",
+            "0 0 0px rgba(220,38,38,0)"
+          ]
+        }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         className="fixed bottom-6 left-6 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-red-600 to-red-700 text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all glow-red cursor-pointer"
       >
